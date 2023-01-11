@@ -1,8 +1,8 @@
 import React from 'react'
 import Styles from './BasicButton.module.scss';
-const BasicButton = () => {
+const BasicButton = (props) => {
   return (
-    <button className={Styles.button}>1</button>
+    <button className={Styles.button} id={props.id}>{props.text}</button>
   )
 }
 
