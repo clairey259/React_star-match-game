@@ -1,11 +1,14 @@
 import React from 'react'
-import BasicStar from '../BasicStar/BasicStar'
+import BasicStar from '../BasicStar/BasicStar';
+import Styles from './StarDisplay.module.scss';
 
-const StarDisplay = () => {
+const StarDisplay = (props) => {
   return (
-    <>
-        <BasicStar />
-    </>
+    <div className={Styles.starBox}>
+    {props.range(1, 9).map((number) => (
+          <BasicStar id={number} text={number} />
+      ))}
+    </div>
   )
 }
 

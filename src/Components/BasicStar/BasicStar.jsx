@@ -6,7 +6,6 @@ const BasicStar = () => {
   return (
     <>
       <FontAwesomeIcon icon={faStar} className={Styles.star}/>
-      
     </>
   );
 };
