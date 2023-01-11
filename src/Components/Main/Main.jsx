@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <>
         <StarDisplay />
-        <ButtonBox />
+        <ButtonBox numberOfButtons={9}/>
     </>
   )
 }
