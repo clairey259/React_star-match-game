@@ -1,5 +1,7 @@
 .button {
     height: 30%;
+    min-height: fit-content;
+    min-width: fit-content;
     width: 30%;
     margin: auto;
     cursor: pointer;

@@ -8,7 +8,7 @@ const ButtonBox = (props) => {
   return (
     <div className={Styles.buttonBox}>
       {range(1, 9).map((number) => (
-          <BasicButton key={number} text={number} status={props.numberStatus(number)}/>
+          <BasicButton key={number} text={number} status={props.numberStatus(number)} onNumberClick={props.onNumberClick}/>
       ))}
     </div>
   );
