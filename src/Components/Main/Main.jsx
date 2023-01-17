@@ -6,7 +6,8 @@ import StarDisplay from "../StarDisplay/StarDisplay";
 import Timer from "../Timer/Timer";
 import Styles from "./Main.module.scss";
 
-const Main = () => {
+const Main = (props) => {
+  console.log(range(1, 9))
   const [availableNumbers, setAvailableNumbers] = useState(range(1, 9));
   const [candidateNumbers, setCandidateNumbers] = useState([]);
   const [numberOfStars, setStars] = useState(getRandomInt(10));
@@ -25,13 +26,6 @@ const Main = () => {
   const gameStatus = availableNumbers.length === 0 
   ? 'won' 
   : secondsLeft === 0 ? "lost" : "active";
-
-  const resetGame = () => {
-    setStars(getRandomInt(10));
-    setAvailableNumbers(range(1, 9));
-    setCandidateNumbers([]);
-    setSecondsLeft(10)
-  };
 
   const numberStatus = (number) => {
     if (!availableNumbers.includes(number)) {
@@ -67,7 +61,7 @@ const Main = () => {
   return (
     <div className={Styles.main}>
       {gameStatus != 'active' ? (
-        <PlayAgain resetGame={resetGame} gameStatus={gameStatus}/>
+        <PlayAgain startNewGame={props.startNewGame} gameStatus={gameStatus}/>
       ) : (
         <StarDisplay numberOfStars={numberOfStars} />
       )}

@@ -1,17 +1,26 @@
-import { useState } from 'react';
-import './App.scss';
-import Main from './Components/Main/Main';
-import Navbar from './Components/Navbar/Navbar';
-import Timer from './Components/Timer/Timer';
+import { useState } from "react";
+import "./App.scss";
+import Main from "./Components/Main/Main";
+import Navbar from "./Components/Navbar/Navbar";
 
-const App = () => {
+const StarMatch = () => {
+  const [gameID, setGameID] = useState(1);
+  const startNewGame = () => setGameID(gameID + 1);
+  return (
+    <>
+      <Game key={gameID} startNewGame={startNewGame}/>
+    </>
+  );
+};
 
+const Game = (props) => {
   return (
     <>
       <Navbar />
-      <Main />
+      <Main startNewGame={props.startNewGame}/>
     </>
   );
-}
+};
 
-export default App;
+export default StarMatch;
+

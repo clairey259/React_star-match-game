@@ -13,7 +13,7 @@ const PlayAgain = (props) => {
       >
         {props.gameStatus === "lost" ? "GameOver" : "Well Done!"}
       </div>
-      <button onClick={props.resetGame} className={ButtonStyles.button}>
+      <button onClick={props.startNewGame} className={ButtonStyles.button}>
         Play Again
       </button>
     </div>
