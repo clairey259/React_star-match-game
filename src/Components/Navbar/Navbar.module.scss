@@ -1,15 +1,26 @@
 .navBar {
     display: flex;
+    flex-direction: column;
     height: 20vh;
     width: 100vw;
     align-items: center;
     justify-content: center;
     
     h1{
-        text-decoration: underline;
+        font-weight: 900;
 
         &:hover {
             color: goldenrod;
         }
+    }
+
+    h2{
+        font-size: .8rem;
+        font-weight: 800;
+        text-decoration: underline;
+    }
+
+    h3 {
+        font-size: .8rem;
     }
 }

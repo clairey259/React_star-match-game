@@ -1,12 +1,13 @@
 import React from "react";
 import BasicButton from "../BasicButton/BasicButton";
 import Styles from "./ButtonBox.module.scss";
+import { range } from "../../Utils";
 
-const ButtonBox = (props) => {
+const ButtonBox = () => {
 
   return (
     <div className={Styles.buttonBox}>
-      {props.range(1, 9).map((number) => (
+      {range(1, 9).map((number) => (
           <BasicButton id={number} text={number} />
       ))}
     </div>
