@@ -3,10 +3,11 @@ import BasicStar from '../BasicStar/BasicStar';
 import Styles from './StarDisplay.module.scss';
 import { range } from '../../Utils';
 
-const StarDisplay = () => {
+const StarDisplay = (props) => {
+
   return (
     <div className={Styles.starBox}>
-    {range(1, 9).map((number) => (
+    {range(1, props.numberOfStars).map((number) => (
           <BasicStar id={number} text={number} />
       ))}
     </div>
