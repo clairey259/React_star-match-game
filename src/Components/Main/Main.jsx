@@ -1,23 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getRandomInt, randomSumIn, range, sumArray } from "../../Utils";
 import ButtonBox from "../ButtonBox/ButtonBox";
 import PlayAgain from "../PlayAgain/PlayAgain";
 import StarDisplay from "../StarDisplay/StarDisplay";
+import Timer from "../Timer/Timer";
 import Styles from "./Main.module.scss";
 
 const Main = () => {
   const [availableNumbers, setAvailableNumbers] = useState(range(1, 9));
   const [candidateNumbers, setCandidateNumbers] = useState([]);
   const [numberOfStars, setStars] = useState(getRandomInt(10));
+  const [secondsLeft, setSecondsLeft] = useState(10);
+
+  useEffect(() => {
+    if (secondsLeft > 0 && availableNumbers.length > 0) {
+      const timerID = setTimeout(() => {
+        setSecondsLeft(secondsLeft - 1);
+      }, 1000);
+      return () => clearTimeout(timerID)
+    }
+  });
 
   const candidatesAreWrong = sumArray(candidateNumbers) > numberOfStars;
-  const gameIsFinished = availableNumbers.length === 0;
+  const gameStatus = availableNumbers.length === 0 
+  ? 'won' 
+  : secondsLeft === 0 ? "lost" : "active";
 
   const resetGame = () => {
     setStars(getRandomInt(10));
     setAvailableNumbers(range(1, 9));
-    setCandidateNumbers([])
-  }
+    setCandidateNumbers([]);
+    setSecondsLeft(10)
+  };
 
   const numberStatus = (number) => {
     if (!availableNumbers.includes(number)) {
@@ -30,7 +44,7 @@ const Main = () => {
   };
 
   const onNumberClick = (number, currentStatus) => {
-    if (currentStatus === "used") {
+    if (gameStatus != 'active' || currentStatus === "used") {
       return;
     }
     const newCandidateNumbers =
@@ -52,12 +66,13 @@ const Main = () => {
 
   return (
     <div className={Styles.main}>
-      {gameIsFinished ? (
-        <PlayAgain resetGame={resetGame}/>
+      {gameStatus != 'active' ? (
+        <PlayAgain resetGame={resetGame} gameStatus={gameStatus}/>
       ) : (
         <StarDisplay numberOfStars={numberOfStars} />
       )}
       <ButtonBox numberStatus={numberStatus} onNumberClick={onNumberClick} />
+      <Timer secondsLeft={secondsLeft} />
     </div>
   );
 };
