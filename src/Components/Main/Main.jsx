@@ -7,10 +7,9 @@ import Timer from "../Timer/Timer";
 import Styles from "./Main.module.scss";
 
 const Main = (props) => {
-  console.log(range(1, 9))
   const [availableNumbers, setAvailableNumbers] = useState(range(1, 9));
   const [candidateNumbers, setCandidateNumbers] = useState([]);
-  const [numberOfStars, setStars] = useState(getRandomInt(10));
+  const [numberOfStars, setStars] = useState(getRandomInt(9));
   const [secondsLeft, setSecondsLeft] = useState(10);
 
   useEffect(() => {
