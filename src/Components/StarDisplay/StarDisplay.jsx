@@ -10,7 +10,6 @@ const StarDisplay = (props) => {
       {range(1, props.numberOfStars).map((number) => (
         <BasicStar key={number} text={number} />
       ))}
-      <PlayAgain />
     </div>
   );
 };

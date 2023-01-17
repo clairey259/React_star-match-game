@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getRandomInt, randomSumIn, range, sumArray } from "../../Utils";
 import ButtonBox from "../ButtonBox/ButtonBox";
+import PlayAgain from "../PlayAgain/PlayAgain";
 import StarDisplay from "../StarDisplay/StarDisplay";
 import Styles from "./Main.module.scss";
 
@@ -10,8 +11,13 @@ const Main = () => {
   const [numberOfStars, setStars] = useState(getRandomInt(10));
 
   const candidatesAreWrong = sumArray(candidateNumbers) > numberOfStars;
-
   const gameIsFinished = availableNumbers.length === 0;
+
+  const resetGame = () => {
+    setStars(getRandomInt(10));
+    setAvailableNumbers(range(1, 9));
+    setCandidateNumbers([])
+  }
 
   const numberStatus = (number) => {
     if (!availableNumbers.includes(number)) {
@@ -27,10 +33,10 @@ const Main = () => {
     if (currentStatus === "used") {
       return;
     }
-    const newCandidateNumbers = 
-      currentStatus === 'available' 
-      ? candidateNumbers.concat(number)
-      : candidateNumbers.filter(cn => cn !== number);
+    const newCandidateNumbers =
+      currentStatus === "available"
+        ? candidateNumbers.concat(number)
+        : candidateNumbers.filter((cn) => cn !== number);
     if (sumArray(newCandidateNumbers) !== numberOfStars) {
       setCandidateNumbers(newCandidateNumbers);
     } else {
@@ -46,7 +52,11 @@ const Main = () => {
 
   return (
     <div className={Styles.main}>
-      <StarDisplay numberOfStars={numberOfStars} />
+      {gameIsFinished ? (
+        <PlayAgain resetGame={resetGame}/>
+      ) : (
+        <StarDisplay numberOfStars={numberOfStars} />
+      )}
       <ButtonBox numberStatus={numberStatus} onNumberClick={onNumberClick} />
     </div>
   );
