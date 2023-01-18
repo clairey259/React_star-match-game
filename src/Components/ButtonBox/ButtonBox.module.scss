@@ -1,4 +1,7 @@
 .buttonBox {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
     border: solid black 2px;
     height: 40vh;
     width: 40vw;

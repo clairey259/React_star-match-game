@@ -11,7 +11,7 @@ const PlayAgain = (props) => {
         className={Styles.message}
         style={{ color: props.gameStatus === "lost" ? "red" : "green" }}
       >
-        {props.gameStatus === "lost" ? "GameOver" : "Well Done!"}
+        {props.gameStatus === "lost" ? "Game Over" : "Well Done!"}
       </div>
       <button onClick={props.startNewGame} className={ButtonStyles.button}>
         Play Again

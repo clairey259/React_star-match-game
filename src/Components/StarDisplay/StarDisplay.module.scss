@@ -1,4 +1,7 @@
 .starBox{
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-row-end: 4;
     display: flex;
     flex-wrap: wrap;
     height: 40vh;
