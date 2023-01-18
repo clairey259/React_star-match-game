@@ -1,3 +1,3 @@
-Created with the help of the Pluralsight React course. 
-<n/>
+Created with the help of the Pluralsight React course./
+_/
 Link to Course: https://app.pluralsight.com/library/courses/react-js-getting-started
